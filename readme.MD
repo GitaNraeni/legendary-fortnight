@@ -1,212 +1,163 @@
-```markdown
-# Discord Multifunction Bot
+# KAIZY Bot - Discord Auto Thread & Anonymous System
 
-Bot Discord berbasis **Node.js** dan **discord.js v14** dengan fitur:
-- Auto Thread (media / teks)
-- Pesan Anonim
-- Sistem Feedback
-- Clear Chat
-- Slowmode
-- Slash Command & Prefix Command
+![Node.js](https://img.shields.io/badge/Node.js-18.x-brightgreen)
+![Discord.js](https://img.shields.io/badge/discord.js-v14-blue)
+![License](https://img.shields.io/badge/license-MIT-yellow)
 
-Source utama: `index.js` :contentReference[oaicite:0]{index=0}
+**KAIZY Bot** adalah bot Discord multifungsi untuk mengatur channel media & teks secara otomatis, lengkap dengan sistem anonim, feedback, auto-thread, slowmode, dan slash command modern.
 
 ---
 
-## 🚀 Fitur Utama
+## ✨ Fitur Utama
 
-### 1. Auto Thread
-Membuat thread otomatis ketika ada pesan:
-- Mode `media` → hanya file/gambar, teks akan dihapus
-- Mode `text` → hanya teks, media akan dihapus
-- Bisa aktifkan slowmode otomatis
+* **Auto Thread (Media / Text)**
+  Otomatis membuat thread setiap ada pesan sesuai mode channel.
 
-Command:
-```
+* **Media Only Channel**
+  Hanya menerima gambar / video. Teks langsung dihapus.
 
-/autothread
-!autothread <media|text> <#channel> <enabled|disabled> [slowmode]
+* **Text Only Channel**
+  Hanya menerima teks. Media langsung dihapus.
 
-```
+* **Anonymous Message System**
+  User bisa kirim pesan anonim lewat tombol + modal.
 
----
+* **Feedback System**
+  User kirim feedback dan admin bisa balas via DM langsung.
 
-### 2. Pesan Anonim
-User bisa kirim pesan tanpa ketahuan identitasnya lewat tombol + modal.
+* **Clear Chat**
+  Hapus 1–100 pesan sekaligus.
 
-Command:
-```
+* **Slowmode Manager**
+  Atur slowmode langsung dari command.
 
-/setanonim
-!setanonim <#channel>
+* **Slash Command & Prefix Support**
+  Support `/command` dan `!command`.
 
-```
-
----
-
-### 3. Feedback System
-User kirim feedback lewat tombol.
-Admin bisa balas via DM langsung dari tombol.
-
-Command:
-```
-
-/feedback
-!feedback <#sendchannel> <#receivechannel>
-
-```
+* **Dynamic Bot Status**
+  Status bot update otomatis berdasarkan jumlah server & fitur aktif.
 
 ---
 
-### 4. Clear Chat
-Hapus pesan 1–100 sekaligus.
+## 📜 Command List
+
+| Command       | Deskripsi                               |
+| ------------- | --------------------------------------- |
+| `/autothread` | Aktif/nonaktif auto-thread (media/text) |
+| `/setanonim`  | Setup sistem pesan anonim               |
+| `/feedback`   | Setup sistem feedback                   |
+| `/clear`      | Hapus pesan (1–100)                     |
+| `/slowmode`   | Atur slowmode channel                   |
+| `/ping`       | Cek latensi bot                         |
+| `/help`       | Tampilkan menu bantuan                  |
+
+Versi prefix:
 
 ```
-
-/clear
-!clear <jumlah>
-
-```
-
----
-
-### 5. Slowmode
-Aktif / nonaktif slowmode channel.
-
-```
-
-/slowmode
-!slowmode <enable|disable> <#channel> [detik]
-
-```
-
----
-
-### 6. Ping
-Cek latensi bot.
-
-```
-
-/ping
+!autothread
+!setanonim
+!feedback
+!clear
+!slowmode
 !ping
-
+!help
 ```
 
 ---
 
-## ⚙️ Cara Install
+## 🔧 Cara Install & Run
 
-### 1. Clone Repo
-```
+### 1. Clone Repository
 
-git clone [https://github.com/GitaNraeni/legendary-fortnight.git](https://github.com/GitaNraeni/legendary-fortnight.git)
-cd repository
-
+```bash
+git clone https://github.com/username/kaizy-bot.git
+cd kaizy-bot
 ```
 
 ### 2. Install Dependency
-```
 
+```bash
 npm install
-
 ```
 
-### 3. Install Package yang Dibutuhkan
-Pastikan ada:
-- discord.js
-- dotenv
+Pastikan package utama:
 
-Kalau belum:
-```
+* discord.js v14
+* dotenv
 
+Kalau belum ada:
+
+```bash
 npm install discord.js dotenv
-
 ```
 
 ---
 
-## 🔑 Setup Token
+### 3. Setup .env
 
 Buat file `.env` di root folder:
 
-```
-
-TOKEN=ISI_TOKEN_BOT_KAMU
-
+```bash
+TOKEN=YOUR_DISCORD_BOT_TOKEN
 ```
 
 Ambil token dari:
-https://discord.com/developers/applications
+[https://discord.com/developers/applications](https://discord.com/developers/applications)
 
 ---
 
-## ▶️ Jalankan Bot
+### 4. Jalankan Bot
 
-```
-
+```bash
 node index.js
-
 ```
 
-Kalau sukses:
-```
+Kalau berhasil akan muncul:
 
+```
 Logged in as ...
-
 ```
 
-Kalau error login, berarti token lu salah. Jangan nyalahin server.
+Kalau error login, token lu salah. Simpel.
 
 ---
 
-## 🛠 Permission yang Dibutuhkan
+## 📂 Struktur File
+
+```
+├── index.js
+├── autothread.json
+├── anonim.json
+├── feedback.json
+├── .env
+├── package.json
+└── README.md
+```
+
+File JSON otomatis dibuat untuk menyimpan setting tiap server.
+
+---
+
+## 🔐 Permission yang Dibutuhkan
 
 Bot butuh:
-- Manage Channels
-- Manage Threads
-- Manage Messages
-- Send Messages
-- View Channel
-- Read Message History
 
-Kalau fitur nggak jalan, 90% karena permission lu pelit.
+* Manage Channels
+* Manage Threads
+* Manage Messages
+* Send Messages
+* View Channel
+* Read Message History
 
----
-
-## 📁 File Konfigurasi Otomatis
-
-Bot akan membuat file:
-- `autothread.json`
-- `anonim.json`
-- `feedback.json`
-
-File ini nyimpen setting tiap server.
-
-Jangan dihapus kalau nggak mau setting lu lenyap.
+Kalau fitur nggak jalan, cek permission dulu. Jangan panik duluan.
 
 ---
 
-## 📌 Notes
+**Author:** [KWOCAG](https://discord.com/users/1219604670054404188)
 
-- Support Slash Command & Prefix `!`
-- Activity status auto update
-- Semua setting tersimpan per server (guild-based)
+**KAIZY**
 
----
-
-## 💡 Butuh Bantuan?
-
-Gunakan:
-```
-
-/help
-
-```
-
-Atau cek menu bantuan di server.
+**Invite Bot:**
+[KLIK DISINI](https://discord.com/oauth2/authorize?client_id=1349536671359565884&permissions=8&integration_type=0&scope=bot+applications.commands)
 
 ---
-
-Selesai.  
-Sekarang tinggal deploy. Jangan cuma dibaca doang terus botnya nggak dinyalain.
-```
